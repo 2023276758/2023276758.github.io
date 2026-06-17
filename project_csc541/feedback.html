@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | The People's Places</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .feedback-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-form {
+            margin-bottom: 40px;
+        }
+
+        .feedback-form h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .feedback-list {
+            margin-top: 40px;
+        }
+
+        .feedback-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .feedback-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .feedback-date {
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        .feedback-content {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .feedback-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .reply-btn, .delete-btn {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .delete-btn {
+            color: var(--accent-color);
+        }
+
+        .reply-form {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+
+        .replies {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--light-color);
+        }
+
+        .reply-item {
+            background: #f9f9f9;
+            border-radius: 5px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .admin-controls {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 1px solid #eee;
+        }
+
+        .admin-controls h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .pin-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .pin-input input {
+            width: 100px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            margin-top: 10px;
+        }
+
+        .error-message {
+            color: var(--accent-color);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Feedback & Comments</h1>
+            <p>Share your thoughts about our research and urban spaces</p>
+        </div>
+    </header>
+
+    <nav id="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="healing-spaces.html">Healing Spaces</a></li>
+                <li><a href="visitor-satisfaction.html">Visitor Satisfaction</a></li>
+                <li><a href="historical-preservation.html">Historical Preservation</a></li>
+                <li><a href="feedback.html" class="current">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="feedback">
+        <div class="container">
+            <div class="feedback-container">
+                <div class="feedback-form">
+                    <h3>Share Your Thoughts</h3>
+                    <form id="newFeedbackForm">
+                        <div class="form-group">
+                            <label for="name">Your Name (optional)</label>
+                            <input type="text" id="name" placeholder="Anonymous">
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback">Your Feedback*</label>
+                            <textarea id="feedback" required placeholder="What are your thoughts about our research or urban spaces in Malaysia?"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Submit Feedback</button>
+                        <div id="formMessage" class="success-message hidden"></div>
+                    </form>
+                </div>
+
+                <div class="feedback-list">
+                    <h3>Community Feedback</h3>
+                    <div id="feedbackItems">
+                        <!-- Feedback items will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="admin-controls">
+                    <h3>Admin Controls</h3>
+                    <div class="pin-input">
+                        <input type="password" id="adminPin" placeholder="Enter PIN">
+                        <button id="verifyPin" class="btn">Verify</button>
+                    </div>
+                    <div id="pinMessage" class="error-message hidden"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 The People's Places Research Project. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+ 	  <script>
+    const API_BASE = 'https://cors-anywhere.herokuapp.com/http://localhost/project-csc541/api/feedback.php';
+    const ADMIN_PIN = "1234"; // Only for initial client-side validation
+    
+   
+    const feedbackForm = document.getElementById('newFeedbackForm');
+    const feedbackItems = document.getElementById('feedbackItems');
+    const verifyPinBtn = document.getElementById('verifyPin');
+    const adminPinInput = document.getElementById('adminPin');
+    const pinMessage = document.getElementById('pinMessage');
+    const formMessage = document.getElementById('formMessage');
+    
+    
+    let isAdmin = false;
+    let authToken = null;
+    
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        loadFeedback();
+        
+        
+        feedbackForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitFeedback();
+        });
+        
+        
+        verifyPinBtn.addEventListener('click', verifyAdminPin);
+    });
+    
+    
+    async function loadFeedback() {
+        try {
+            const response = await fetch(API_BASE);
+            if (!response.ok) throw new Error('Network response was not ok');
+            
+            const feedback = await response.json();
+            renderFeedback(feedback);
+        } catch (error) {
+            console.error('Error loading feedback:', error);
+            feedbackItems.innerHTML = '<p class="error-message">Failed to load feedback. Please try again later.</p>';
+        }
+    }
+    
+    
+    function renderFeedback(feedbackData) {
+        feedbackItems.innerHTML = '';
+        
+        if (!feedbackData || feedbackData.length === 0) {
+            feedbackItems.innerHTML = '<p>No feedback yet. Be the first to share your thoughts!</p>';
+            return;
+        }
+        
+        feedbackData.forEach(feedback => {
+            const feedbackElement = createFeedbackElement(feedback);
+            feedbackItems.appendChild(feedbackElement);
+        });
+    }
+    
+    
+    function createFeedbackElement(feedback) {
+        const feedbackElement = document.createElement('div');
+        feedbackElement.className = 'feedback-item';
+        feedbackElement.dataset.id = feedback.id;
+        
+        
+        const header = document.createElement('div');
+        header.className = 'feedback-header';
+        
+        const author = document.createElement('div');
+        author.className = 'feedback-author';
+        author.textContent = feedback.author || 'Anonymous';
+        
+        const date = document.createElement('div');
+        date.className = 'feedback-date';
+        date.textContent = formatDate(feedback.created_at);
+        
+        header.appendChild(author);
+        header.appendChild(date);
+        
+        
+        const content = document.createElement('div');
+        content.className = 'feedback-content';
+        content.textContent = feedback.content;
+        
+        
+        const actions = document.createElement('div');
+        actions.className = 'feedback-actions';
+        
+        const replyBtn = document.createElement('button');
+        replyBtn.className = 'reply-btn';
+        replyBtn.innerHTML = '<i class="fas fa-reply"></i> Reply';
+        replyBtn.addEventListener('click', () => toggleReplyForm(feedback.id));
+        
+        actions.appendChild(replyBtn);
+        
+        
+        if (isAdmin) {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+            deleteBtn.addEventListener('click', () => deleteFeedback(feedback.id));
+            actions.appendChild(deleteBtn);
+        }
+        
+        
+        const replyForm = document.createElement('div');
+        replyForm.className = 'reply-form';
+        replyForm.dataset.parentId = feedback.id;
+        replyForm.innerHTML = `
+            <div class="form-group">
+                <label for="reply-name-${feedback.id}">Your Name (optional)</label>
+                <input type="text" id="reply-name-${feedback.id}" placeholder="Anonymous">
+            </div>
+            <div class="form-group">
+                <label for="reply-content-${feedback.id}">Your Reply*</label>
+                <textarea id="reply-content-${feedback.id}" required placeholder="Write your reply..."></textarea>
+            </div>
+            <button type="button" class="btn submit-reply">Submit Reply</button>
+            <div class="reply-message hidden"></div>
+        `;
+        
+        replyForm.querySelector('.submit-reply').addEventListener('click', () => {
+            submitReply(feedback.id);
+        });
+        
+        
+        const repliesElement = document.createElement('div');
+        repliesElement.className = 'replies';
+        
+        if (feedback.replies && feedback.replies.length > 0) {
+            feedback.replies.forEach(reply => {
+                const replyElement = document.createElement('div');
+                replyElement.className = 'reply-item';
+                replyElement.innerHTML = `
+                    <div class="feedback-header">
+                        <div class="feedback-author">${reply.author || 'Anonymous'}</div>
+                        <div class="feedback-date">${formatDate(reply.created_at)}</div>
+                    </div>
+                    <div class="feedback-content">${reply.content}</div>
+                `;
+                repliesElement.appendChild(replyElement);
+            });
+        }
+        
+        
+        feedbackElement.appendChild(header);
+        feedbackElement.appendChild(content);
+        feedbackElement.appendChild(actions);
+        feedbackElement.appendChild(replyForm);
+        feedbackElement.appendChild(repliesElement);
+        
+        return feedbackElement;
+    }
+    
+    
+    async function submitFeedback() {
+        const nameInput = document.getElementById('name');
+        const feedbackInput = document.getElementById('feedback');
+        
+        if (!feedbackInput.value.trim()) {
+            showMessage(formMessage, 'Please enter your feedback', 'error');
+            return;
+        }
+        
+        try {
+            const response = await fetch(API_BASE, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    author: nameInput.value.trim() || undefined,
+                    content: feedbackInput.value.trim()
+                })
+            });
+            
+            if (!response.ok) throw new Error('Submission failed');
+            
+            
+            nameInput.value = '';
+            feedbackInput.value = '';
+            
+            
+            showMessage(formMessage, 'Thank you for your feedback!', 'success');
+            
+           
+            loadFeedback();
+        } catch (error) {
+            console.error('Error submitting feedback:', error);
+            showMessage(formMessage, 'Failed to submit feedback', 'error');
+        }
+    }
+    
+   
+    async function submitReply(feedbackId) {
+        const replyForm = document.querySelector(`.reply-form[data-parent-id="${feedbackId}"]`);
+        const nameInput = replyForm.querySelector('input[type="text"]');
+        const contentInput = replyForm.querySelector('textarea');
+        const messageElement = replyForm.querySelector('.reply-message');
+        
+        if (!contentInput.value.trim()) {
+            showMessage(messageElement, 'Please enter your reply', 'error');
+            return;
+        }
+        
+        try {
+            const response = await fetch(API_BASE, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    feedback_id: feedbackId,
+                    author: nameInput.value.trim() || undefined,
+                    content: contentInput.value.trim()
+                })
+            });
+            
+            if (!response.ok) throw new Error('Reply failed');
+            
+           
+            nameInput.value = '';
+            contentInput.value = '';
+            
+           
+            showMessage(messageElement, 'Reply submitted!', 'success');
+            
+          
+            loadFeedback();
+        } catch (error) {
+            console.error('Error submitting reply:', error);
+            showMessage(messageElement, 'Failed to submit reply', 'error');
+        }
+    }
+    
+
+    async function deleteFeedback(feedbackId) {
+        if (!isAdmin || !authToken) return;
+        
+        if (confirm('Are you sure you want to delete this feedback?')) {
+            try {
+                const response = await fetch(`${API_BASE}?id=${feedbackId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Basic ${authToken}`
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Deletion failed');
+                
+                // Reload feedback
+                loadFeedback();
+            } catch (error) {
+                console.error('Error deleting feedback:', error);
+                alert('Failed to delete feedback');
+            }
+        }
+    }
+    
+    
+    async function verifyAdminPin() {
+        const enteredPin = adminPinInput.value.trim();
+        
+        if (!enteredPin) {
+            showMessage(pinMessage, 'Please enter PIN', 'error');
+            return;
+        }
+        
+        try {
+            const response = await fetch('api/login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pin: enteredPin })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                isAdmin = true;
+                authToken = result.token;
+                showMessage(pinMessage, 'Admin access granted', 'success');
+                adminPinInput.value = '';
+                loadFeedback(); // Re-render to show delete buttons
+            } else {
+                showMessage(pinMessage, result.message || 'Invalid PIN', 'error');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            showMessage(pinMessage, 'Login failed', 'error');
+        }
+    }
+    
+ 
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    }
+    
+
+    function showMessage(element, message, type) {
+        element.textContent = message;
+        element.className = `${type}-message`;
+        element.classList.remove('hidden');
+        
+      
+        setTimeout(() => {
+            element.classList.add('hidden');
+        }, 3000);
+    }
+	</script>
+ </body>
+</html>
