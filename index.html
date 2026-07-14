@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naqiyudin's Portfolio | UiTM</title>
     
+    <!--Tailwind css setup -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -23,20 +24,20 @@
     </script>
 
     <style>
-        /* Custom Scrollbar */
+        /* Custom scrollbar to match UiTM colors */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #4a148c; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: #ffb300; }
 
-        /* Glassmorphism Effect for Header */
+        /* Glassmorphism for the header */
         .glass-header {
             background: linear-gradient(135deg, rgba(74, 20, 140, 0.95), rgba(42, 10, 82, 0.95));
             backdrop-filter: blur(10px);
             border-bottom: 5px solid #ffb300;
         }
 
-        /* Card Hover Animations */
+        /* simple card hover effect */
         .project-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -45,7 +46,6 @@
             box-shadow: 0 20px 25px -5px rgba(74, 20, 140, 0.2), 0 10px 10px -5px rgba(74, 20, 140, 0.1);
         }
 
-        /* Tech Stack Badges */
         .tech-badge {
             display: inline-block;
             padding: 4px 12px;
@@ -61,14 +61,17 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
+    <!-- Header Section -->
     <header class="glass-header text-white text-center py-16 px-4 shadow-xl">
         <h1 class="text-4xl md:text-6xl font-extrabold mb-3 tracking-tight">`Naqiyudin Bin Mohd Sany</h1>
         <p class="text-xl md:text-2xl text-uitm-gold font-semibold mb-2">Computer Science (Multimedia Computing)</p>
         <p class="text-md md:text-lg text-gray-300">Universiti Teknologi MARA (UiTM) Shah Alam | CDCS253</p>
     </header>
 
+    <!-- Main content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
+        <!-- Academic info -->
         <section class="mb-14">
             <h2 class="text-3xl font-bold text-uitm-purple border-b-4 border-uitm-gold inline-block pb-2 mb-8">Academic Profile</h2>
             <div class="overflow-x-auto shadow-xl rounded-xl">
@@ -93,34 +96,37 @@
             </div>
         </section>
 
+        <!-- Skills section -->
         <section class="mb-14">
-            <h2 class="text-3xl font-bold text-uitm-purple border-b-4 border-uitm-gold inline-block pb-2 mb-8">Core Competencies</h2>
+            <h2 class="text-3xl font-bold text-uitm-purple border-b-4 border-uitm-gold inline-block pb-2 mb-8">Skills & Tools</h2>
             <div class="bg-white p-8 rounded-xl shadow-xl border-l-8 border-uitm-purple">
                 <ul class="list-disc list-inside space-y-4 text-gray-700 text-lg marker:text-uitm-gold">
-                    <li><strong class="text-uitm-purple">Game & VR Development:</strong> Unity Engine, C# Scripting, Physics engines, 2D/3D Environment Design.</li>
-                    <li><strong class="text-uitm-purple">Web Development:</strong> HTML5, CSS3, Tailwind CSS, JavaScript, Flask (Python Backend).</li>
-                    <li><strong class="text-uitm-purple">Artificial Intelligence & Image Processing:</strong> Deep Learning, CNN Architecture (VGG16), TensorFlow, Keras, NLP Integration.</li>
-                    <li><strong class="text-uitm-purple">Software Engineering:</strong> Requirements Elicitation, System Architecture, UML Diagrams, Software Requirements Specification (SRS).</li>
+                    <li><strong class="text-uitm-purple">Game & VR Development:</strong> Unity Engine, C# Scripting, 2D/3D physics, Environment Design.</li>
+                    <li><strong class="text-uitm-purple">Web Development:</strong> HTML5, CSS3, Tailwind CSS, JavaScript, basic Flask (Python Backend).</li>
+                    <li><strong class="text-uitm-purple">AI & Image Processing:</strong> Deep Learning, CNNs (like VGG16), TensorFlow, Keras.</li>
+                    <li><strong class="text-uitm-purple">Software Engineering:</strong> Gathering requirements, UML Diagrams, writing SRS documents.</li>
                 </ul>
             </div>
         </section>
 
+        <!-- Projects Grid -->
         <section class="mb-14">
             <h2 class="text-3xl font-bold text-uitm-purple border-b-4 border-uitm-gold inline-block pb-2 mb-8">Featured Projects</h2>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
+                <!-- Demon Rush -->
                 <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 flex flex-col">
                     <video class="w-full h-64 object-cover border-b-4 border-uitm-gold bg-gray-900" controls muted>
                         <source src="assets/video/DemonRushDemoVid.mp4" type="video/mp4">
                     </video>
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-uitm-purple mb-2">Demon Rush (CSC683)</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>Project Explanation:</strong> A fast-paced 2D side-scrolling endless runner set in a mysterious castle. The game introduces a unique survival mechanic: a continuously draining health bar that forces players to constantly move, grapple across gaps, and slay enemies.</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>About the project:</strong> A 2D endless runner game set in a castle. We added a twist where your health bar constantly drains, so you have to keep moving, killing enemies, and using a grappling hook to survive as long as possible.</p>
                         
                         <div class="mb-4">
-                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">My Contribution & Achievements:</h4>
-                            <p class="text-sm text-gray-700">Collaborated as a core team member to engineer the primary game loop in Unity. Successfully implemented the dynamic HP drain/replenish system and the physics-based grappling hook mechanic, delivering a highly replayable and competitive high-score experience.</p>
+                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">What I did:</h4>
+                            <p class="text-sm text-gray-700">I worked heavily on the main game loop in Unity. I wrote the C# scripts for the dynamic HP draining system and programmed the physics for the grappling hook mechanic.</p>
                         </div>
                         
                         <div class="mt-auto">
@@ -131,17 +137,18 @@
                     </div>
                 </div>
 
+                <!-- Endless Drive -->
                 <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 flex flex-col">
                     <video class="w-full h-64 object-cover border-b-4 border-uitm-gold bg-gray-900" controls muted>
                         <source src="assets/video/EndlessDriveVideoPresentation.mp4" type="video/mp4">
                     </video>
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-uitm-purple mb-2">Endless Drive (CSC573)</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>Project Explanation:</strong> A high-octane 3D endless runner testing player reflexes on an infinitely generating highway. The game focuses on Virtual Reality principles, complex Unity physics, and obstacle avoidance.</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>About the project:</strong> A 3D driving game built with VR principles in mind. The player drives down an infinitely generating highway and has to dodge obstacles at increasing speeds.</p>
                         
                         <div class="mb-4">
-                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">My Contribution & Achievements:</h4>
-                            <p class="text-sm text-gray-700">Assisted in scripting the procedural generation of the 3D environment and collision physics. Successfully helped design a two-tiered difficulty system (Easy/Hard modes) that perfectly balanced the difficulty curve and guaranteed high player accessibility.</p>
+                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">What I did:</h4>
+                            <p class="text-sm text-gray-700">I helped write the code that randomly generates the roads and obstacles so the map never ends. I also worked on balancing the game's Easy and Hard modes so it felt fair to the player.</p>
                         </div>
 
                         <div class="mt-auto">
@@ -152,17 +159,18 @@
                     </div>
                 </div>
 
+                <!-- Fruit Freshness AI -->
                 <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 flex flex-col">
                     <video class="w-full h-64 object-cover border-b-4 border-uitm-gold bg-gray-900" controls muted>
                         <source src="assets/video/VideoPresentationFruits.mp4" type="video/mp4">
                     </video>
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-uitm-purple mb-2">AI Fruit Freshness (CSC583)</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>Project Explanation:</strong> An Artificial Intelligence computer vision model designed to automate the detection of fresh versus rotten fruit using Deep Learning and Convolutional Neural Networks (CNN).</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>About the project:</strong> An AI model we trained to look at images of fruit and automatically detect whether they are fresh or rotten using deep learning.</p>
                         
                         <div class="mb-4">
-                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">My Contribution & Achievements:</h4>
-                            <p class="text-sm text-gray-700">Contributed to training and evaluating the VGG16 CNN architecture. Handled dataset augmentation and utilized evaluation metrics (such as confusion matrices and accuracy plots) to prove the model's robust validation accuracy and efficiency.</p>
+                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">What I did:</h4>
+                            <p class="text-sm text-gray-700">I helped train the VGG16 CNN model using TensorFlow. I also handled checking the model's accuracy by creating confusion matrices and accuracy plots to make sure it was learning correctly.</p>
                         </div>
 
                         <div class="mt-auto">
@@ -173,15 +181,16 @@
                     </div>
                 </div>
 
+                <!-- Tomato Leaf Disease AI -->
                 <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 flex flex-col">
                        <img class="w-full h-64 object-cover border-b-4 border-uitm-gold" src="assets/images/csc566.png" alt="Tomato Leaf Disease">
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-uitm-purple mb-2">Tomato Leaf Disease AI (CSC566)</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>Project Explanation:</strong> A CNN-based image processing project developed to classify tomato leaf diseases into four distinct categories (Bacterial Spot, Leaf Mold, Spider Mites, and Healthy) to aid agricultural management.</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>About the project:</strong> An image processing project aimed at agriculture. We built a CNN to classify four types of tomato leaf conditions: Bacterial Spot, Leaf Mold, Spider Mites, and Healthy.</p>
                         
                         <div class="mb-4">
-                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">My Contribution & Achievements:</h4>
-                            <p class="text-sm text-gray-700">Collaborated on image preprocessing and the design of a lightweight CNN architecture. A major achievement for the team was training the model to reach a highly commendable <strong>93.33% test accuracy</strong>, proving its viability for real-world agricultural use.</p>
+                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">What I did:</h4>
+                            <p class="text-sm text-gray-700">I worked on preprocessing the images before feeding them to the AI, and helped design our CNN model. As a team, we were really proud to achieve a 93.33% accuracy rate on our test data.</p>
                         </div>
 
                         <div class="mt-auto">
@@ -192,63 +201,66 @@
                     </div>
                 </div>
 
+                <!-- Smart Finance Tracker -->
                 <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 flex flex-col">
                     <img class="w-full h-64 object-cover border-b-4 border-uitm-gold" src="assets/images/csc649.png" alt="Smart Finance Tracker">
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-uitm-purple mb-2">Smart Finance Tracker (CSC649)</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>Project Explanation:</strong> A client-server financial web application built for students and employees. It replaces passive tracking with an intelligent Information Chatbot, allowing users to actively and conversationally manage their budgets.</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>About the project:</strong> A web app to help university students track their spending. Instead of just filling out boring forms, we integrated a chatbot so users can manage their budgets conversationally.</p>
                         
                         <div class="mb-4">
-                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">My Contribution & Achievements:</h4>
-                            <p class="text-sm text-gray-700">Helped engineer the client-server architecture, connecting a responsive HTML/JS frontend to a Flask-based backend. Aided in integrating the NLP engine, allowing the chatbot to accurately recognize user intents for spending summaries and bill reminders.</p>
+                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">What I did:</h4>
+                            <p class="text-sm text-gray-700">I focused on connecting our HTML/JS frontend to the Python Flask backend. I also helped integrate the NLP engine so the chatbot could actually understand what the user was asking it to track.</p>
                         </div>
 
                         <div class="mt-auto">
                             <span class="tech-badge">Flask (Python)</span>
                             <span class="tech-badge">HTML/JS</span>
-                            <span class="tech-badge">NLP Engine</span>
+                            <span class="tech-badge">NLP</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Campus Cafeteria -->
                 <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 flex flex-col">
                     <img class="w-full h-64 object-cover border-b-4 border-uitm-gold" src="assets/images/ccos.png" alt="Campus Cafeteria System">
                     <div class="p-6 flex-grow flex flex-col justify-center">
                         <h3 class="text-2xl font-bold text-uitm-purple mb-2">Campus Cafeteria Ordering System</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>Project Explanation:</strong> "CCOS" is a comprehensive software platform enabling students to order food and beverages from campus vendors online, featuring secure HTTP data transfers, real-time tracking, and online payments.</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>About the project:</strong> A proposed software platform for students to order food online from campus cafes, track their orders, and pay online.</p>
                         
                         <div class="mb-4">
-                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">My Role: Software Requirement Analyst</h4>
-                            <p class="text-sm text-gray-700">Spearheaded the crucial requirements engineering phase. I successfully collected, analyzed, and defined high-level stakeholder needs, translating them into a formal and comprehensive Software Requirements Specification (SRS) document.</p>
+                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">My Role: Requirement Analyst</h4>
+                            <p class="text-sm text-gray-700">For this project, my main job was in the planning phase. I interviewed potential users, gathered the system requirements, and wrote up the full Software Requirements Specification (SRS) document for the team to follow.</p>
                         </div>
 
                         <div class="mt-auto">
                             <span class="tech-badge">Requirements Engineering</span>
                             <span class="tech-badge">SRS Documentation</span>
-                            <span class="tech-badge">System Architecture</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Kolej Alam Bina -->
                 <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 flex flex-col">
                     <img class="w-full h-64 object-cover border-b-4 border-uitm-gold" src="assets/images/csc541.png" alt="Kolej Alam Bina Website">
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-uitm-purple mb-2">Kolej Alam Bina Research (CSC541)</h3>
-                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>Project Explanation:</strong> A comprehensive web-based research presentation analyzing the impacts of recreational, entertainment, and historical urban landscapes in Malaysia on user satisfaction and community preservation.</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed"><strong>About the project:</strong> A website built to present academic research about how urban landscapes (parks, historical areas) in Malaysia affect community satisfaction.</p>
                         
                         <div class="mb-4">
-                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">My Contribution & Achievements:</h4>
-                            <p class="text-sm text-gray-700">Developed a fully responsive HTML, CSS, and JS website to showcase extensive urban landscape research. Successfully translated complex academic findings into an interactive, visually engaging digital experience.</p>
+                            <h4 class="font-bold text-sm text-uitm-dark uppercase mb-1">What I did:</h4>
+                            <p class="text-sm text-gray-700">I coded the website from scratch using HTML, CSS, and JS. The goal was to take a lot of heavy academic data and make it interactive and easy for normal people to read online.</p>
                         </div>
 
+                        <!-- Link to external project -->
                         <div class="mt-2 mb-6">
                             <a href="project_csc541/index.html" class="inline-block bg-uitm-purple hover:bg-uitm-dark text-white font-bold py-2 px-6 rounded-full shadow-md transition duration-300 text-sm">
-                                Launch Research Site &rarr;
+                                View Website &rarr;
                             </a>
                         </div>
 
                         <div class="mt-auto">
-                            <span class="tech-badge">HTML5 / CSS3</span>
+                            <span class="tech-badge">HTML / CSS</span>
                             <span class="tech-badge">JavaScript</span>
                             <span class="tech-badge">Web Design</span>
                         </div>
@@ -260,6 +272,7 @@
 
     </main>
 
+    <!-- Footer -->
     <footer class="bg-uitm-dark text-white text-center py-8 border-t-4 border-uitm-gold">
         <p class="text-sm text-gray-400">&copy; 2026 Naqiyudin Bin Mohd Sany. Prepared for Universiti Teknologi MARA (UiTM).</p>
     </footer>
